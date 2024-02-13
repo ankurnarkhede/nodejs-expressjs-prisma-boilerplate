@@ -9,7 +9,8 @@
     "test": "npm run lint",
     "start": "node server.js",
     "dev": "NODE_ENV=development nodemon server.js",
-    "prisma-format": "npx prisma format"
+    "prisma-format": "npx prisma format",
+    "prisma-db-push": "npx prisma dp push"
   },
   "dependencies": {
     "@prisma/client": "^4.5.0",
