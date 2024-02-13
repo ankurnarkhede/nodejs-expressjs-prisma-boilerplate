@@ -1,10 +1,10 @@
-import winston from "winston";
-import config from "config";
+const winston = require("winston");
+const config = require("config");
 
 // define the custom settings for each transport (file, console)
 const options = {
   file: {
-    level: String(config.get("logs.logLevel")),
+    level: config.get("logs.logLevel"),
     filename: "logs/app.log",
     handleExceptions: true,
     json: true,
@@ -13,7 +13,7 @@ const options = {
     colorize: false,
   },
   console: {
-    level: String(config.get("logs.logLevel")),
+    level: config.get("logs.logLevel"),
     handleExceptions: true,
     json: false,
     colorize: true,
@@ -24,7 +24,7 @@ const options = {
 // instantiate a new Winston Logger with the settings defined above
 // eslint-disable-line new-cap
 /* eslint new-cap: ["error", { "properties": false }] */
-const logger: winston.Logger = winston.createLogger({
+const logger = winston.createLogger({
   /**
    * Application defaults:
    * - File logs enabled in: [production, staging]
@@ -44,4 +44,4 @@ const logger: winston.Logger = winston.createLogger({
   exitOnError: false, // do not exit on handled exceptions
 });
 
-export default logger;
+module.exports = logger;

@@ -7,7 +7,7 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    "standard-with-typescript",
+    "standard",
     "plugin:mocha/recommended",
     "plugin:security/recommended",
     "prettier",
@@ -20,8 +20,6 @@ module.exports = {
   },
   parserOptions: {
     ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json"],
   },
   ignorePatterns: ["dist/*"],
   rules: {
@@ -36,8 +34,5 @@ module.exports = {
 
     // Prettier rules
     "prettier/prettier": "error",
-
-    // @todo: Remove these temporarily allowed rules below once the issues are resolved
-    "@typescript-eslint/strict-boolean-expressions": "off",
   },
 };

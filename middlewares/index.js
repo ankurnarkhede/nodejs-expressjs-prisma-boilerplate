@@ -1,15 +1,14 @@
-import express from "express";
-import cookieParser from "cookie-parser";
-import boom from "express-boom";
-import helmet from "helmet";
-import cors from "cors";
-import config from "config";
-import passport from "passport";
-import * as dotenv from "dotenv";
-import morganMiddleware from "../utils/httpLogger";
-import "../providers/google";
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const boom = require("express-boom");
+const helmet = require("helmet");
+const cors = require("cors");
+const passport = require("passport");
+const dotenv = require("dotenv");
+const morganMiddleware = require("../utils/httpLogger");
+require("../providers/google");
 
-const middleware = (app: express.Application): void => {
+const middleware = (app) => {
   // Load vars from .env to process.env
   dotenv.config();
 
@@ -48,4 +47,4 @@ const middleware = (app: express.Application): void => {
   app.use(passport.initialize());
 };
 
-export default middleware;
+module.exports = middleware;

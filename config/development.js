@@ -3,9 +3,9 @@
  * Defaults set from default.js
  */
 
-export default {
+module.exports = {
   logs: {
-    enableFileLogs: true,
-    enableConsoleLogs: false,
+    enableFileLogs: false,
+    enableConsoleLogs: true,
   },
 };

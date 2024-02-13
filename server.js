@@ -1,14 +1,19 @@
-import config from "config";
-import logger from "./utils/logger";
-import * as http from "http";
-import app from "./app";
-import ErrnoException = NodeJS.ErrnoException;
-
-// Initialise globals
+/**
+ * Initialise globals
+ */
+const config = require("config");
 global.config = config;
+
+const logger = require("./utils/logger");
 global.logger = logger;
 
-const port: number = config.get("port");
+/**
+ * Module dependencies.
+ */
+const http = require("http");
+const app = require("./app");
+
+const port = config.get("port");
 app.set("port", port);
 
 /**
@@ -29,7 +34,7 @@ server.on("listening", onListening);
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error: ErrnoException): ErrnoException {
+function onError(error) {
   if (error.syscall !== "listen") {
     throw error;
   }
@@ -59,7 +64,7 @@ function onError(error: ErrnoException): ErrnoException {
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening(): void {
+function onListening() {
   logger.info(
     `Express API running on port:${port} with environment:${String(
       process.env.NODE_ENV
@@ -67,4 +72,4 @@ function onListening(): void {
   );
 }
 
-export default server;
+module.exports = server;
